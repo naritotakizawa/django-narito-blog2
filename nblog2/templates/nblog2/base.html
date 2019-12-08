@@ -1,0 +1,34 @@
+{% load static %}
+{% load nblog2 %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>{% block meta_title %}{% endblock %}</title>
+    <meta name="description" content="{% block meta_description %}{% endblock %}">
+    <link rel="stylesheet" href="{% static 'nblog2/style.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Lato|Noto+Sans+JP&display=swap" rel="stylesheet">
+    {% block extrahead %}{% endblock %}
+</head>
+<body>
+
+<header id="site-header">
+    <h1><a href="{% url 'nblog2:note_list' %}">{% block title %}DESIGN NOTE{% endblock %}</a></h1>
+</header>
+
+{% block content %}{% endblock %}
+
+
+<footer id="site-footer">
+
+    {% render_search_form request %}
+    <ul class="inline-ul">
+        {% block link %}{% endblock %}
+    </ul>
+    <p class="copyright">{% block copyright %}{% endblock %}</p>
+
+</footer>
+
+</body>
+</html>

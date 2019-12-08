@@ -1,0 +1,44 @@
+{% extends 'nblog2/base_site.html' %}
+{% load humanize %}
+{% load nblog2 %}
+
+{% block content %}
+    <h1 class="menu">{{ heading }}</h1>
+    <section id="note-list">
+        {% for note in note_list %}
+
+            <article class="col2">
+
+                <div class="right">
+                    <img class="thumbnail" src="{{ note.thumbnail.url }}">
+                </div>
+                <div class="left">
+
+                    <h2 class="title"><a href="{% url 'nblog2:note_detail' note.pk %}">{{ note.title }}</a></h2>
+
+                    <p class="category">{{ note.category }}</p>
+                    <p class="date">{{ note.created_at }}（
+                        <time class="updated_at"
+                              datetime="{{ note.updated_at | date:'Y-m-d' }}">{{ note.updated_at | naturaltime }}に更新
+                        </time>
+                        ）
+                    </p>
+                </div>
+
+            </article>
+
+        {% endfor %}
+
+
+        <nav id="page">
+            {% for num in page_obj.paginator.page_range %}
+                {% if page_obj.number == num %}
+                    <span class="page current">{{ num }}</span>
+                {% else %}
+                    <a href="?{% url_replace request 'page' num %}" class="page">{{ num }}</a>
+                {% endif %}
+            {% endfor %}
+        </nav>
+    </section>
+
+{% endblock %}

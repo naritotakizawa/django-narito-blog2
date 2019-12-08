@@ -3,7 +3,7 @@
 project/
 manage.py
 media/
-templates/
+/templates/
 staticfiles/
 
 # Byte-compiled / optimized / DLL files

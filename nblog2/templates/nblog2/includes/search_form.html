@@ -1,0 +1,11 @@
+<form action="{% url 'nblog2:note_list' %}" method="GET" id="search-form">
+    <div class="text-and-button">
+        {{ search_form.key_word }}
+        <button type="submit" class="inline-button">検索</button>
+    </div>
+    <div class="simple-select">
+        {{ search_form.category }}
+        <span class="arrow"></span>
+    </div>
+
+</form>
