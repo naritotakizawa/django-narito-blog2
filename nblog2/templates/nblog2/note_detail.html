@@ -8,27 +8,28 @@
     <p class="menu"><a href="{% get_return_link request %}">戻る</a></p>
 
     <article class="detail">
-        <header class="col2" id="top">
+        <header class="box" id="top">
 
-            <div class="right">
-                <img class="thumbnail" src="{{ note.thumbnail.url }}">
-            </div>
-            <div class="left">
-                <h1 class="title">{{ note.title }}</h1>
+                <div class="right">
+                    <img class="thumbnail" src="{{ note.thumbnail.url }}">
+                </div>
+                <div class="left">
 
-                <p class="category">{{ note.category }}</p>
-                <p class="date">{{ note.created_at }}（
-                    <time class="updated_at"
-                          datetime="{{ note.updated_at | date:'Y-m-d' }}">{{ note.updated_at | naturaltime }}に更新
-                    </time>
-                    ）
-                </p>
-            </div>
+                    <h1 class="title">{{ note.title }}</h1>
+
+                    <p class="category">{{ note.category }}</p>
+                    <p class="date">{{ note.created_at }}（
+                        <time class="updated_at"
+                              datetime="{{ note.updated_at | date:'Y-m-d' }}">{{ note.updated_at | naturaltime }}に更新
+                        </time>
+                        ）
+                    </p>
+                </div>
 
         </header>
 
         {% for page in note.page_set.all %}
-            <section class="col2" id="sec{{ page.index }}">
+            <section class="box col2" id="sec{{ page.index }}">
                 <div clasS="right">
                     {% if page.image %}
                         <img src="{{ page.image.url }}">

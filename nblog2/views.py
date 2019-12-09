@@ -7,7 +7,7 @@ from .models import Note, Category
 
 class NoteList(generic.ListView):
     model = Note
-    paginate_by = 10
+    paginate_by = 12
     ordering = '-created_at'
 
     def get_queryset(self):

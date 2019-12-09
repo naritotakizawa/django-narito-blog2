@@ -7,7 +7,7 @@
 
 
 h1, h2, h3 {
-    font-size: 16px;
+    font-size: 14px;
 }
 
 
@@ -63,19 +63,20 @@ img {
 }
 
 
-.col2 {
+.box {
     background-color: #fafafa;
     margin-bottom: 50px;
-
 }
 
-.left {
+.thumbnail {
+    display: block;
+    margin: 0 auto;
+    height: 250px;
+    object-fit: cover;
+}
+
+.left, .right {
     padding: 10px;
-}
-
-
-.right {
-    padding: 5px;
 }
 
 
@@ -85,6 +86,7 @@ img {
 
 .content > p {
     line-height: 2;
+    font-size: 14px;
 }
 
 #page {
@@ -104,6 +106,10 @@ img {
     content: "→";
 }
 
+
+#top {
+    text-align: center;
+}
 
 .text-and-button, .simple-select {
     position: relative;
@@ -173,26 +179,30 @@ img {
     color: #999;
 }
 
+
 @media (min-width: 1024px) {
+
+
     body {
-        padding: 50px;
+        padding: 50px 50px 0 50px;
         font-size: 16px;
     }
 
-    #site-header {
-        margin-bottom: 200px;
-
+    h1, h2, h3 {
+        font-size: 16px;
     }
 
-    .menu {
-        margin-bottom: 200px;
+    #note-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-column-gap: 50px;
+        column-gap: 50px;
     }
-
 
     .col2 {
         display: grid;
         grid-template-columns: 400px 1fr;
-        margin-bottom: 200px;
+        margin-bottom: 50px;
     }
 
     .left {
@@ -204,18 +214,10 @@ img {
     .right {
         grid-row: 1;
         grid-column: 2;
-        padding: 5px;
     }
-
 
     #page {
-        margin-bottom: 200px;
-    }
-
-
-    .text-and-button, .simple-select {
-        position: relative;
-        width: 200px;
+        grid-column: 1 / -1;
     }
 
     #site-footer {
@@ -230,12 +232,14 @@ img {
 }
 
 @media (min-width: 1366px) {
-    .col2 {
-        grid-template-columns: 600px 1fr;
+    body {
+        width: 1366px;
+        box-sizing: border-box;
+        margin: 0 auto;
     }
 
-    .left {
-        padding: 50px;
+    #note-list {
+        grid-template-columns: 1fr 1fr 1fr;
     }
 
 }
