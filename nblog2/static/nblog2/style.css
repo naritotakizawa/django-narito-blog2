@@ -75,7 +75,7 @@ img {
     object-fit: cover;
 }
 
-.left, .right {
+.left, .right, .space {
     padding: 10px;
 }
 
@@ -87,6 +87,8 @@ img {
 .content > p {
     line-height: 2;
     font-size: 14px;
+    text-align: justify;
+    text-justify: inter-ideograph;
 }
 
 #page {
@@ -208,12 +210,18 @@ img {
     .left {
         grid-row: 1;
         grid-column: 1;
+        align-self: start;
+        position: sticky;
+        top: 0;
     }
 
 
     .right {
         grid-row: 1;
         grid-column: 2;
+        align-self: start;
+        position: sticky;
+        top: 0;
     }
 
     #page {
