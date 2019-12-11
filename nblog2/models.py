@@ -13,6 +13,7 @@ class Note(models.Model):
     title = models.CharField('タイトル', max_length=32)
     thumbnail = models.ImageField('サムネイル')
     category = models.ForeignKey(Category, on_delete=models.PROTECT, verbose_name='カテゴリ')
+    description = models.TextField('大雑把な説明')
     is_public = models.BooleanField('公開可能か?', default=True)
     created_at = models.DateTimeField('作成日', default=timezone.now)
     updated_at = models.DateTimeField('更新日', default=timezone.now)
