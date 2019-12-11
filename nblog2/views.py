@@ -1,12 +1,13 @@
 from django.db.models import Q
-from django.http import HttpResponseBadRequest, JsonResponse
+from django.http import HttpResponseBadRequest, JsonResponse, Http404
 from django.views import generic
 from .forms import FileUploadForm, NoteSearchForm
-from .models import Note, Category
+from .models import Note
 
 
 class NoteList(generic.ListView):
     model = Note
+    queryset = Note.objects.filter(is_public=True)
     paginate_by = 12
     ordering = '-created_at'
 
@@ -40,8 +41,19 @@ class NoteList(generic.ListView):
         return context
 
 
+class PrivateNoteList(NoteList):
+    queryset = Note.objects.filter(is_public=False)
+
+
 class NoteDetail(generic.DetailView):
     model = Note
+
+    def get_object(self, queryset=None):
+        note = super().get_object()
+        if note.is_public or self.request.user.is_authenticated:
+            return note
+        else:
+            raise Http404
 
 
 def upload(request):
