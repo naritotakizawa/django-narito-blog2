@@ -11,7 +11,9 @@
         <header class="box">
 
             <div class="right">
-                <img src="{{ note.thumbnail.url }}" alt="{{ note.title }}">
+                <a href="{{ note.thumbnail.url }}" target="_blank">
+                    <img src="{{ note.thumbnail.url }}" alt="{{ note.title }}">
+                </a>
             </div>
 
             <div class="left">
@@ -38,7 +40,9 @@
             <section class="box" id="sec{{ page.index }}">
                 <div clasS="right">
                     {% if page.image %}
-                        <img src="{{ page.image.url }}" alt="{{ page.title }}">
+                        <a href="{{ page.image.url }}" target="_blank">
+                            <img src="{{ page.image.url }}" alt="{{ page.title }}">
+                        </a>
                     {% endif %}
                 </div>
                 <div class="left text">
