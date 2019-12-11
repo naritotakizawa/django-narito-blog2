@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Q
 from django.http import HttpResponseBadRequest, JsonResponse, Http404
 from django.views import generic
@@ -41,7 +42,7 @@ class NoteList(generic.ListView):
         return context
 
 
-class PrivateNoteList(NoteList):
+class PrivateNoteList(LoginRequiredMixin, NoteList):
     queryset = Note.objects.filter(is_public=False)
 
 
