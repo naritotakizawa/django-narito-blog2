@@ -10,7 +10,7 @@ class Category(models.Model):
 
 
 class Note(models.Model):
-    title = models.CharField('タイトル', max_length=32)
+    title = models.CharField('タイトル', max_length=100)
     thumbnail = models.ImageField('サムネイル')
     category = models.ForeignKey(Category, on_delete=models.PROTECT, verbose_name='カテゴリ')
     description = models.TextField('大雑把な説明')
@@ -23,6 +23,7 @@ class Note(models.Model):
 
 
 class Page(models.Model):
+    title = models.CharField('タイトル', max_length=100, blank=True)
     text = models.TextField('本文')
     image = models.ImageField('画像', blank=True)
     book = models.ForeignKey(Note, verbose_name='どのBookのページ?', on_delete=models.CASCADE)

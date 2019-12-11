@@ -37,7 +37,7 @@
         </header>
 
         {% for page in note.page_set.all %}
-            <section class="box" id="sec{{ page.index }}">
+            <section class="box">
                 <div clasS="right">
                     {% if page.image %}
                         <a href="{{ page.image.url }}" target="_blank">
@@ -45,8 +45,17 @@
                         </a>
                     {% endif %}
                 </div>
-                <div class="left text">
-                    {{ page.text | linebreaks | urlize }}
+                <div class="left">
+                    {% if page.title %}
+                        <div class="meta">
+                            <h2 id="sec{{ page.index }}">{{ page.title }}</h2>
+                        </div>
+
+                    {% endif %}
+                    <div class="text">
+                        {{ page.text | linebreaks | urlize }}
+                    </div>
+
                 </div>
 
             </section>
