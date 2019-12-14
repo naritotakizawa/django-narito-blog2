@@ -52,10 +52,9 @@ img {
 
 .menu {
     margin-bottom: 100px;
-    font-size: 22px;
     background-color: #333;
     color: #fff;
-    padding: 5px;
+    padding: 10px;
 }
 
 .menu > a {
@@ -91,17 +90,18 @@ img {
     margin-bottom: 100px;
     background-color: #333;
     color: #fff;
-    font-size: 22px;
 }
 
 .page {
+    display: inline-block;
     color: #fff;
-    margin-right: 20px;
-    padding: 5px;
+    margin-left: 20px;
+    padding: 10px;
 }
 
-.current::before {
-    content: "→";
+.current {
+    background-color: #fff;
+    color: #333;
 }
 
 
