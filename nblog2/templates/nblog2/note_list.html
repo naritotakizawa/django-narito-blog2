@@ -3,8 +3,10 @@
 {% load nblog2 %}
 
 {% block content %}
-    <h1 class="menu">{{ heading }}</h1>
-    <section id="note-list">
+    <div class="menu">
+        <h1 class="container">{{ heading }}</h1>
+    </div>
+    <section id="note-list" class="container">
         {% for note in note_list %}
 
             <article class="box">
@@ -38,6 +40,8 @@
 
             </article>
 
+        {% empty %}
+            <p class="box">検索結果はありませんでした。</p>
         {% endfor %}
 
 
@@ -48,6 +52,7 @@
                 {% else %}
                     <a href="?{% url_replace request 'page' num %}" class="page">{{ num }}</a>
                 {% endif %}
+
             {% endfor %}
         </nav>
     </section>

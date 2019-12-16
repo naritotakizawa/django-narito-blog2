@@ -17,7 +17,8 @@ class NoteSearchForm(forms.Form):
         label='カテゴリ',
         required=False,
         queryset=Category.objects.annotate(post_count=Count('note')).order_by('name'),
-        empty_label='カテゴリの選択'
+        empty_label='全カテゴリ',
+        widget=forms.RadioSelect,
     )
 
 

@@ -5,9 +5,14 @@
 {% block meta_title %}{{ note.title }} | {{ block.super }}{% endblock %}
 
 {% block content %}
-    <p class="menu"><a href="{% get_return_link request %}">戻る</a></p>
+    <div class="menu">
+        <div class="container">
+            <a href="{% get_return_link request %}">戻る</a>
+        </div>
 
-    <article class="detail">
+    </div>
+
+    <article class="container">
         <header class="box">
 
             <div class="right">

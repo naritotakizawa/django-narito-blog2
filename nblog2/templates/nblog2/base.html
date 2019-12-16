@@ -13,21 +13,36 @@
 </head>
 <body>
 
-<header id="site-header">
+<header id="site-header" class="container">
     <h1><a href="{% url 'nblog2:note_list' %}">{% block title %}DESIGN NOTE{% endblock %}</a></h1>
 </header>
 
 {% block content %}{% endblock %}
 
 
+<aside>
+    <div id="search-heading">
+        <h2 class="container">Search</h2>
+    </div>
+
+    <div class="container">
+        <form action="{% url 'nblog2:note_list' %}" method="GET" id="search-form">
+            {% render_search_form request %}
+        </form>
+    </div>
+
+</aside>
+
 <footer id="site-footer">
+    <div id="footer-heading">
+        <p class="copyright container">{% block copyright %}{% endblock %}</p>
+    </div>
 
-    {% render_search_form request %}
-    <ul class="inline-ul">
-        {% block link %}{% endblock %}
+    <ul id="footer-link">
+        <div class="container">
+            {% block link %}{% endblock %}
+        </div>
     </ul>
-    <p class="copyright">{% block copyright %}{% endblock %}</p>
-
 </footer>
 
 </body>
