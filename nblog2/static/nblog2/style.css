@@ -192,7 +192,9 @@ button:hover {
     margin-left: 20px;
 }
 
-
+.copyright {
+    font-weight: 700;
+}
 
 @media (min-width: 1024px) {
 
