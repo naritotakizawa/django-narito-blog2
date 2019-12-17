@@ -64,6 +64,7 @@ img {
 
 .menu a {
     color: #fff;
+    font-weight: bold;
 }
 
 
@@ -193,7 +194,7 @@ button:hover {
 }
 
 .copyright {
-    font-weight: 700;
+    font-weight: bold;
 }
 
 @media (min-width: 1024px) {
