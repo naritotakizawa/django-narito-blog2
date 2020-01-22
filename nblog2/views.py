@@ -44,6 +44,7 @@ class NoteList(generic.ListView):
 
 class PrivateNoteList(LoginRequiredMixin, NoteList):
     queryset = Note.objects.filter(is_public=False)
+    raise_exception = True
 
 
 class NoteDetail(generic.DetailView):
