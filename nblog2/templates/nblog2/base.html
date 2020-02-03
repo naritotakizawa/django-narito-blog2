@@ -10,14 +10,31 @@
     <link rel="stylesheet" href="{% static 'nblog2/style.css' %}">
     <link rel="stylesheet" href="https://use.typekit.net/vrt4lod.css">
     <script>
-      (function(d) {
-        var config = {
-          kitId: 'jjv2htu',
-          scriptTimeout: 3000,
-          async: true
-        },
-        h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
-      })(document);
+        (function (d) {
+            var config = {
+                    kitId: 'jjv2htu',
+                    scriptTimeout: 3000,
+                    async: true
+                },
+                h = d.documentElement, t = setTimeout(function () {
+                    h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive";
+                }, config.scriptTimeout), tk = d.createElement("script"), f = false,
+                s = d.getElementsByTagName("script")[0], a;
+            h.className += " wf-loading";
+            tk.src = 'https://use.typekit.net/' + config.kitId + '.js';
+            tk.async = true;
+            tk.onload = tk.onreadystatechange = function () {
+                a = this.readyState;
+                if (f || a && a != "complete" && a != "loaded") return;
+                f = true;
+                clearTimeout(t);
+                try {
+                    Typekit.load(config)
+                } catch (e) {
+                }
+            };
+            s.parentNode.insertBefore(tk, s)
+        })(document);
     </script>
     {% block extrahead %}{% endblock %}
 </head>
@@ -29,30 +46,13 @@
 
 {% block content %}{% endblock %}
 
-
-<aside>
-    <div id="search-heading">
-        <h2 class="container">Search</h2>
-    </div>
-
-    <div class="container">
-        <form action="{% url 'nblog2:note_list' %}" method="GET" id="search-form">
-            {% render_search_form request %}
-        </form>
-    </div>
-
-</aside>
-
 <footer id="site-footer">
-    <div id="footer-heading">
-        <p class="copyright container">{% block copyright %}{% endblock %}</p>
-    </div>
-
-    <ul id="footer-link">
-        <div class="container">
+    <div class="container">
+        <ul id="footer-link">
             {% block link %}{% endblock %}
-        </div>
-    </ul>
+        </ul>
+        <p>{% block copyright %}{% endblock %}</p>
+    </div>
 </footer>
 
 </body>

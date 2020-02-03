@@ -5,67 +5,58 @@
 {% block meta_title %}{{ note.title }} | {{ block.super }}{% endblock %}
 
 {% block content %}
-    <div class="menu">
-        <div class="container">
-            <a href="{% get_return_link request %}">戻る</a>
-        </div>
-
+    <div id="menu">
+        <a href="{% get_return_link request %}">戻る</a>
     </div>
 
-    <article class="container">
-        <header class="box">
+    <article class="container" id="detail">
+        <header class="section">
 
-            <div class="right">
-                <a href="{{ note.thumbnail.url }}" target="_blank">
-                    <img src="{{ note.thumbnail.url }}" alt="{{ note.title }}">
-                </a>
+            <a href="{{ note.thumbnail.url }}" target="_blank">
+                <img src="{{ note.thumbnail.url }}" alt="{{ note.title }}">
+            </a>
+            <h1 class="title">{{ note.title }}</h1>
+
+            <div class="meta">
+                <p>{{ note.category }}</p>
+                <p class="date">{{ note.created_at }}（
+                    <time class="updated_at"
+                          datetime="{{ note.updated_at | date:'Y-m-d' }}">{{ note.updated_at | naturaltime }}に更新
+                    </time>
+                    ）
+                </p>
             </div>
 
-            <div class="left">
-                <div class="meta">
-                    <h1 class="title">{{ note.title }}</h1>
 
-                    <p class="category">{{ note.category }}</p>
-                    <p class="date">{{ note.created_at }}（
-                        <time class="updated_at"
-                              datetime="{{ note.updated_at | date:'Y-m-d' }}">{{ note.updated_at | naturaltime }}に更新
-                        </time>
-                        ）
-                    </p>
-                </div>
-
-                <div class="text">
-                    {{ note.description | linebreaks | urlize }}
-                </div>
+            <div class="text">
+                {{ note.description | linebreaks | urlize }}
             </div>
+
 
         </header>
 
         {% for page in note.page_set.all %}
-            <section class="box">
-                <div clasS="right">
-                    {% if page.image %}
-                        <a href="{{ page.image.url }}" target="_blank">
-                            <img src="{{ page.image.url }}" alt="{{ page.title }}">
-                        </a>
-                    {% endif %}
-                </div>
-                <div class="left">
-                    {% if page.title %}
-                        <div class="meta">
-                            <h2 id="sec{{ page.index }}">{{ page.title }}</h2>
-                        </div>
+            <section class="section">
 
-                    {% endif %}
-                    <div class="text">
-                        {{ page.text | linebreaks | urlize }}
-                    </div>
 
+                {% if page.title %}
+                    <h2 id="sec{{ page.index }}">{{ page.title }}</h2>
+
+                {% endif %}
+                {% if page.image %}
+                    <a href="{{ page.image.url }}" target="_blank">
+                        <img src="{{ page.image.url }}" alt="{{ page.title }}">
+                    </a>
+                {% endif %}
+
+                <div class="text">
+                    {{ page.text | linebreaks | urlize }}
                 </div>
 
             </section>
         {% endfor %}
 
     </article>
+
 
 {% endblock %}

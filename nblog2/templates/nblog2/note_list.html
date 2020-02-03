@@ -3,21 +3,18 @@
 {% load nblog2 %}
 
 {% block content %}
-    <div class="menu">
+    <div id="menu">
         <h1 class="container">{{ heading }}</h1>
     </div>
-    <section id="note-list" class="container">
+    <section id="list" class="container">
         {% for note in note_list %}
 
             <article class="box">
 
-                <div class="right">
                     <a href="{{ note.thumbnail.url }}" target="_blank">
-                        <img class="" src="{{ note.thumbnail.url }}" alt="{{ note.title }}">
+                        <img class="thumbnail" src="{{ note.thumbnail.url }}" alt="{{ note.title }}">
                     </a>
-                </div>
 
-                <div class="left">
 
                     <div class="meta">
                         <h2 class="title"><a href="{% url 'nblog2:note_detail' note.pk %}">{{ note.title }}</a></h2>
@@ -30,13 +27,6 @@
                             ）
                         </p>
                     </div>
-
-                    <div class="text">
-                        {{ note.description | linebreaks | urlize }}
-                    </div>
-
-
-                </div>
 
             </article>
 
@@ -56,5 +46,12 @@
             {% endfor %}
         </nav>
     </section>
+
+<aside id="search" class="container">
+    <h2>Search</h2>
+    <form action="{% url 'nblog2:note_list' %}" method="GET" id="search-form">
+        {% render_search_form request %}
+    </form>
+</aside>
 
 {% endblock %}

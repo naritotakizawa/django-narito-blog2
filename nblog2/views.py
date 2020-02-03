@@ -9,7 +9,7 @@ from .models import Note
 class NoteList(generic.ListView):
     model = Note
     queryset = Note.objects.filter(is_public=True)
-    paginate_by = 10
+    paginate_by = 12
     ordering = '-created_at'
 
     def get_queryset(self):
