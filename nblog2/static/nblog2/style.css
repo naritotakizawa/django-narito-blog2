@@ -6,6 +6,7 @@
 }
 
 body {
+  line-height: 1;
   font-family: gill-sans-nova, noto-sans-cjk-jp, sans-serif;
   font-size: 14px;
   color: #333;
@@ -43,6 +44,10 @@ img {
   max-width: 100%;
   height: auto;
   box-shadow: 0 0 5px #ccc;
+}
+
+li {
+  margin: 0.5em 0;
 }
 
 /* ユーティリティー */
@@ -97,6 +102,10 @@ img {
 
 .title {
   margin: 1em 0;
+}
+
+.category {
+  margin-bottom: 8px;
 }
 
 /* ヘッダー */
@@ -191,11 +200,13 @@ img {
 
 .text > * {
   margin: 1em 0;
+}
+
+.text > p {
   line-height: 2;
   text-align: justify;
   text-justify: inter-ideograph;
 }
-
 
 /* 検索フォーム */
 #search {
@@ -250,6 +261,7 @@ button:hover {
 
 /* フッター */
 #site-footer {
+  padding: 1em 0;
   margin-top: 200px;
   text-align: center;
   background-color: #000;
