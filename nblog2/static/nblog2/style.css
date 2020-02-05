@@ -178,24 +178,45 @@ li {
 
 
 /* 詳細 */
-#detail h1, #detail h2 {
+#detail-container {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+#detail-container > * {
 
 }
 
-#detail header, #detail section {
-  margin-bottom: 100px;
+#detail h1 {
+  margin-top: 100px;
+  margin-bottom: 1em;
+
 }
 
 #detail .meta {
+  margin-bottom: 100px;
   text-align: left;
 }
 
-.section > * {
-  margin: 1em 0
+#detail h2, #detail h3 {
+  margin-top: 100px;
+  margin-left: -1em;
+}
+
+.toc ul {
+  list-style-type: none;
+}
+
+.toc::before {
+  display: block;
+    content: "目次";
+    font-weight: 700;
+  margin-bottom: 1em;
+  margin-left: -1em;
 }
 
 .text {
-  max-width: 633px;
+padding-left: 1em;
 }
 
 .text > * {

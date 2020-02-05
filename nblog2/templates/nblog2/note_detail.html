@@ -10,15 +10,15 @@
     </div>
 
     <article class="container" id="detail">
-        <header class="section">
+        <a href="{{ note.thumbnail.url }}" target="_blank">
+            <img src="{{ note.thumbnail.url }}" alt="{{ note.title }}">
+        </a>
+        <div id="detail-container">
 
-            <a href="{{ note.thumbnail.url }}" target="_blank">
-                <img src="{{ note.thumbnail.url }}" alt="{{ note.title }}">
-            </a>
             <h1 class="title">{{ note.title }}</h1>
 
             <div class="meta">
-                <p>{{ note.category }}</p>
+                <p class="category">{{ note.category }}</p>
                 <p class="date">{{ note.created_at }}（
                     <time class="updated_at"
                           datetime="{{ note.updated_at | date:'Y-m-d' }}">{{ note.updated_at | naturaltime }}に更新
@@ -29,32 +29,11 @@
 
 
             <div class="text">
-                {{ note.description | linebreaks | urlize }}
+                {{ note.text | markdown_to_html }}
             </div>
 
+        </div>
 
-        </header>
-
-        {% for page in note.page_set.all %}
-            <section class="section">
-
-
-                {% if page.title %}
-                    <h2 id="sec{{ page.index }}">{{ page.title }}</h2>
-
-                {% endif %}
-                {% if page.image %}
-                    <a href="{{ page.image.url }}" target="_blank">
-                        <img src="{{ page.image.url }}" alt="{{ page.title }}">
-                    </a>
-                {% endif %}
-
-                <div class="text">
-                    {{ page.text | linebreaks | urlize }}
-                </div>
-
-            </section>
-        {% endfor %}
 
     </article>
 

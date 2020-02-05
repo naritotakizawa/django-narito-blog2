@@ -4,6 +4,8 @@ from django.conf import settings
 from django.shortcuts import resolve_url
 from django.utils.safestring import mark_safe
 from nblog2.forms import NoteSearchForm
+import markdown
+from markdown.extensions import Extension
 
 register = template.Library()
 
@@ -14,6 +16,13 @@ def url_replace(request, field, value):
     url_dict = request.GET.copy()
     url_dict[field] = str(value)
     return url_dict.urlencode()
+
+
+@register.filter
+def markdown_to_html(text):
+    """マークダウンをhtmlに変換する。"""
+    html = markdown.markdown(text, extensions=settings.MARKDOWN_EXTENSIONS)
+    return mark_safe(html)
 
 
 @register.simple_tag

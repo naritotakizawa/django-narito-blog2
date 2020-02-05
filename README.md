@@ -33,6 +33,14 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 ```
 
+```python
+# マークダウンの拡張
+MARKDOWN_EXTENSIONS = [
+    'markdown.extensions.extra',
+    'markdown.extensions.toc',
+]
+```
+
 `urls.py`に追加する。
 
 ```python
