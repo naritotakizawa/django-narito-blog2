@@ -2,7 +2,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Q
 from django.http import HttpResponseBadRequest, JsonResponse, Http404
 from django.views import generic
-from .forms import FileUploadForm, NoteSearchForm
+from .forms import NoteSearchForm
 from .models import Note
 
 
@@ -56,17 +56,3 @@ class NoteDetail(generic.DetailView):
             return note
         else:
             raise Http404
-
-
-def upload(request):
-    """ファイルのアップロード用ビュー"""
-    form = FileUploadForm(files=request.FILES)
-    if form.is_valid():
-        path = form.save()
-        url = '{0}://{1}{2}'.format(
-            request.scheme,
-            request.get_host(),
-            path,
-        )
-        return JsonResponse({'url': url})
-    return HttpResponseBadRequest()
