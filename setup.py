@@ -15,7 +15,7 @@ setup(
     author_email='toritoritorina@gmail.com',
     url='https://github.com/naritotakizawa/django-narito-blog2/',
     packages=find_packages(exclude=('tests',)),
-    install_requires=('django', 'pillow', 'django-admin-sortable2'),
+    install_requires=('django', 'pillow', 'markdown'),
     include_package_data=True,
     license='MIT',
 )

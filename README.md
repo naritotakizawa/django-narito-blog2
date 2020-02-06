@@ -16,7 +16,6 @@ pip install https://github.com/naritotakizawa/django-narito-blog2/archive/master
 ```python
 INSTALLED_APPS = [
     'nblog2.apps.Nblog2Config',  # これ
-    'adminsortable2',  # これ
     'django.contrib.humanize',  # これ
     'django.contrib.admin',
     'django.contrib.auth',

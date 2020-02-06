@@ -6,7 +6,7 @@ name = "pypi"
 [packages]
 django = ">=2.2.4"
 pillow = ">=6.2.0"
-django-admin-sortable2 = "*"
+markdown = "*"
 
 [requires]
 python_version = "3.7"
