@@ -13,7 +13,6 @@ class Note(models.Model):
     title = models.CharField('タイトル', max_length=100)
     thumbnail = models.ImageField('サムネイル')
     category = models.ForeignKey(Category, on_delete=models.PROTECT, verbose_name='カテゴリ')
-    description = models.TextField('大雑把な説明')
     text = models.TextField('本文', blank=True)
     is_public = models.BooleanField('公開可能か?', default=True)
     created_at = models.DateTimeField('作成日', default=timezone.now)
@@ -21,17 +20,3 @@ class Note(models.Model):
 
     def __str__(self):
         return self.title
-
-
-class Page(models.Model):
-    title = models.CharField('タイトル', max_length=100, blank=True)
-    text = models.TextField('本文')
-    image = models.ImageField('画像', blank=True)
-    book = models.ForeignKey(Note, verbose_name='どのBookのページ?', on_delete=models.CASCADE)
-    index = models.PositiveIntegerField('インデックス', default=0)
-
-    class Meta(object):
-        ordering = ['index']
-
-    def __str__(self):
-        return self.text[:100]

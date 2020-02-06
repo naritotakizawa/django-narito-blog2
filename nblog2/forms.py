@@ -1,6 +1,6 @@
 from django import forms
 from django.db.models import Count
-from .models import Page, Category
+from .models import Category
 
 
 class NoteSearchForm(forms.Form):

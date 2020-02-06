@@ -1,6 +1,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Q
-from django.http import HttpResponseBadRequest, JsonResponse, Http404
+from django.http import Http404
 from django.views import generic
 from .forms import NoteSearchForm
 from .models import Note
@@ -23,7 +23,7 @@ class NoteList(generic.ListView):
 
             key_word = self.key_word = form.cleaned_data['key_word']
             if key_word:
-                queryset = queryset.filter(Q(title__icontains=key_word) | Q(page__text__icontains=key_word)).distinct()
+                queryset = queryset.filter(Q(title__icontains=key_word) | Q(text__icontains=key_word)).distinct()
 
         return queryset.select_related('category')
 
