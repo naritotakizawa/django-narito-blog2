@@ -137,6 +137,7 @@ li {
 /* 一覧の各ノート */
 .box {
   margin-bottom: 100px;
+  display: block;
 }
 
 .box:hover {
