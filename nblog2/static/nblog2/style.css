@@ -188,9 +188,8 @@ li {
 
 .mask {
   opacity: 0;
-  background-color: #333;
-  -webkit-transition: all 0.2s ease;
-  transition: all 0.2s ease;
+  background: rgba(0, 0, 0, 0.3);
+  transition: 0.5s;
 
   grid-column: 1;
   grid-row: 1;
@@ -200,13 +199,15 @@ li {
 }
 
 .box:hover .mask {
-  opacity: 0.9;
+  opacity: 1;
 }
 
 .caption {
   font-weight: 700;
   color: #fff;
   letter-spacing: 1px;
+  border: solid 1px #fff;
+  padding: 0.5em 1em;
 }
 
 /* 詳細 */
