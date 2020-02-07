@@ -47,7 +47,7 @@ img {
 }
 
 li {
-  margin: 0.5em 0;
+  margin: 12px 0;
 }
 
 
@@ -216,10 +216,6 @@ li {
   margin: 0 auto;
 }
 
-#detail-container > * {
-
-}
-
 #detail h1 {
   margin-top: 100px;
   margin-bottom: 1em;
@@ -231,9 +227,12 @@ li {
   text-align: left;
 }
 
-#detail h2, #detail h3 {
-  margin-top: 100px;
-  margin-left: -1em;
+.text {
+  padding-left: 1em;
+}
+
+.text > * {
+  margin: 1em 0;
 }
 
 .toc ul {
@@ -248,18 +247,27 @@ li {
   margin-left: -1em;
 }
 
-.text {
-  padding-left: 1em;
-}
-
-.text > * {
-  margin: 1em 0;
+#detail h2, #detail h3 {
+  margin-top: 100px;
+  margin-left: -1em;
 }
 
 .text > p {
   line-height: 2;
   text-align: justify;
   text-justify: inter-ideograph;
+}
+
+#note-nav {
+  position: fixed;
+  right: 2em;
+  bottom: 2em;
+}
+
+#note-nav a {
+  font-weight: 700;
+  color: #333;
+  letter-spacing: 1px;
 }
 
 /* 検索フォーム */

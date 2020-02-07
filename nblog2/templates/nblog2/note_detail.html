@@ -28,13 +28,15 @@
             </div>
 
 
-            <div class="text">
+            <div class="text" id="toc-start">
                 {{ note.text | markdown_to_html }}
             </div>
 
         </div>
 
-
+        <nav id="note-nav">
+            <a href="#toc-start">return</a>
+        </nav>
     </article>
 
 
