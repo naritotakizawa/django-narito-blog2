@@ -8,16 +8,17 @@
     </div>
     <section id="list" class="container">
         {% for note in note_list %}
+            <a class="box" href="{% url 'nblog2:note_detail' note.pk %}">
+                <article class="box-inner">
 
-            <article class="box">
+                    <img class="thumbnail" src="{{ note.thumbnail.url }}" alt="{{ note.title }}">
 
-                    <a href="{{ note.thumbnail.url }}" target="_blank">
-                        <img class="thumbnail" src="{{ note.thumbnail.url }}" alt="{{ note.title }}">
-                    </a>
-
+                    <div class="mask">
+                        <div class="caption">Read More</div>
+                    </div>
 
                     <div class="meta">
-                        <h2 class="title"><a href="{% url 'nblog2:note_detail' note.pk %}">{{ note.title }}</a></h2>
+                        <h2 class="title">{{ note.title }}</h2>
 
                         <p class="category">{{ note.category }}</p>
                         <p class="date">{{ note.created_at }}（
@@ -28,8 +29,8 @@
                         </p>
                     </div>
 
-            </article>
-
+                </article>
+            </a>
         {% empty %}
             <p class="box">検索結果はありませんでした。</p>
         {% endfor %}
@@ -47,11 +48,11 @@
         </nav>
     </section>
 
-<aside id="search" class="container">
-    <h2>Search</h2>
-    <form action="{% url 'nblog2:note_list' %}" method="GET" id="search-form">
-        {% render_search_form request %}
-    </form>
-</aside>
+    <aside id="search" class="container">
+        <h2>Search</h2>
+        <form action="{% url 'nblog2:note_list' %}" method="GET" id="search-form">
+            {% render_search_form request %}
+        </form>
+    </aside>
 
 {% endblock %}

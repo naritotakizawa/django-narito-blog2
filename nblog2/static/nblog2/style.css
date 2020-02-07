@@ -50,7 +50,6 @@ li {
   margin: 0.5em 0;
 }
 
-/* ユーティリティー */
 
 /* コンテナ */
 .container {
@@ -71,45 +70,7 @@ li {
   }
 }
 
-.thumbnail {
-
-}
-
-@media (min-width: 1024px) {
-  .thumbnail {
-    width: 437px;
-    height: 273px;
-    object-fit: cover;
-  }
-}
-
-@media (min-width: 1366px) {
-  .thumbnail {
-    width: 388px;
-    height: 242px;
-  }
-}
-
-
-.box {
-  margin-bottom: 100px;
-}
-
-.meta {
-  color: #666;
-  text-align: center;
-}
-
-.title {
-  margin: 1em 0;
-}
-
-.category {
-  margin-bottom: 8px;
-}
-
 /* ヘッダー */
-
 #site-header {
   margin-top: 200px;
   margin-bottom: 200px;
@@ -155,11 +116,7 @@ li {
   color: #333;
 }
 
-/* 一覧 */
-#list {
-
-}
-
+/* 一覧 レイアウト */
 @media (min-width: 1024px) {
   #list {
     display: grid;
@@ -176,6 +133,80 @@ li {
   }
 }
 
+
+/* 一覧の各ノート */
+.box {
+  margin-bottom: 100px;
+}
+
+.box:hover {
+  text-decoration: none;
+}
+
+.box-inner {
+  display: grid;
+  grid-template-rows: auto auto;
+}
+
+.thumbnail {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+@media (min-width: 1024px) {
+  .thumbnail {
+    width: 437px;
+    height: 273px;
+    object-fit: cover;
+  }
+}
+
+@media (min-width: 1366px) {
+  .thumbnail {
+    width: 388px;
+    height: 242px;
+  }
+}
+
+
+.meta {
+  color: #666;
+  text-align: center;
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.title {
+  margin: 1em 0;
+  color: #333;
+}
+
+.category {
+  margin-bottom: 8px;
+}
+
+.mask {
+  opacity: 0;
+  background-color: #333;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+
+  grid-column: 1;
+  grid-row: 1;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+}
+
+.box:hover .mask {
+  opacity: 0.9;
+}
+
+.caption {
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 1px;
+}
 
 /* 詳細 */
 #detail-container {
@@ -209,14 +240,14 @@ li {
 
 .toc::before {
   display: block;
-    content: "目次";
-    font-weight: 700;
+  content: "目次";
+  font-weight: 700;
   margin-bottom: 1em;
   margin-left: -1em;
 }
 
 .text {
-padding-left: 1em;
+  padding-left: 1em;
 }
 
 .text > * {
@@ -236,8 +267,8 @@ padding-left: 1em;
 }
 
 #search > h2 {
-  letter-spacing: 2px;
   margin-bottom: 20px;
+  letter-spacing: 1px;
 }
 
 #search-form ul {
@@ -290,7 +321,6 @@ button:hover {
 }
 
 #site-footer > p {
-  letter-spacing: 2px;
   font-weight: bold;
 }
 
@@ -307,7 +337,3 @@ button:hover {
 #site-footer a {
   color: #fff;
 }
-
-
-
-
