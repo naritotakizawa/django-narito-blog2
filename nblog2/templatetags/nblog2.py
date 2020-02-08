@@ -3,7 +3,6 @@ from django import template
 from django.conf import settings
 from django.shortcuts import resolve_url
 from django.utils.safestring import mark_safe
-from nblog2.forms import NoteSearchForm
 import markdown
 from markdown.extensions import Extension
 
@@ -36,13 +35,3 @@ def get_return_link(request):
         if request.get_host() == parse_result.netloc:
             return referer
     return top_page
-
-
-@register.inclusion_tag('nblog2/includes/search_form.html')
-def render_search_form(request):
-    if hasattr(request, 'form'):
-        form = request.form
-    else:
-        form = NoteSearchForm(request.GET or None)
-
-    return {'search_form': form}

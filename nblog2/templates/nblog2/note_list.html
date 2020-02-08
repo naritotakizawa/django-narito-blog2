@@ -50,8 +50,16 @@
 
     <aside id="search" class="container">
         <h2>Search</h2>
-        <form action="{% url 'nblog2:note_list' %}" method="GET" id="search-form">
-            {% render_search_form request %}
+        <form action="" method="GET" id="search-form">
+            {{ search_form.category }}
+
+            <div class="field">
+                {{ search_form.key_word }}
+            </div>
+
+            <div class="field">
+                <button type="submit">送信</button>
+            </div>
         </form>
     </aside>
 

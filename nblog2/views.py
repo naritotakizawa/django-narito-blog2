@@ -15,7 +15,7 @@ class NoteList(generic.ListView):
     def get_queryset(self):
         self.category = self.key_word = ''
         queryset = super().get_queryset()
-        form = NoteSearchForm(self.request.GET or None)
+        form = self.form = NoteSearchForm(self.request.GET or None)
         if form.is_valid():
             category = self.category = form.cleaned_data.get('category')
             if category:
@@ -39,6 +39,7 @@ class NoteList(generic.ListView):
         else:
             heading = '全てのノート'
         context['heading'] = heading
+        context['search_form'] = self.form
         return context
 
 
