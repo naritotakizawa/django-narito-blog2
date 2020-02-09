@@ -6,6 +6,8 @@ class Category(models.Model):
     name = models.CharField('カテゴリ名', max_length=100)
 
     def __str__(self):
+        if hasattr(self, 'note_count'):
+            return f'{self.name}({self.note_count})'
         return self.name
 
 

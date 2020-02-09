@@ -1,6 +1,6 @@
 from django import forms
 from django.db.models import Count
-from .models import Category
+from .models import Category, Note
 
 
 class NoteSearchForm(forms.Form):
@@ -14,7 +14,11 @@ class NoteSearchForm(forms.Form):
     category = forms.ModelChoiceField(
         label='カテゴリ',
         required=False,
-        queryset=Category.objects.annotate(post_count=Count('note')).order_by('name'),
-        empty_label='全カテゴリ',
+        queryset=Category.objects.annotate(note_count=Count('note')).order_by('name'),
         widget=forms.RadioSelect,
     )
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        all_note_count = Note.objects.filter(is_public=True).count()
+        self.fields['category'].empty_label = f'全カテゴリ({all_note_count})'
