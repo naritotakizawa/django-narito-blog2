@@ -1,5 +1,5 @@
 # django-narito-blog2
-https://narito.ninja/design/ のソースコード
+シンプルすぎるブログ
 
 ## 動作環境
 Django2.2以上
